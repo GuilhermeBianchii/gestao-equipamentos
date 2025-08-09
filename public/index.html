@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gestão de Equipamentos Clínicos</title>
+
+<!-- Materialize CSS CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+<!-- Material Icons CDN -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="container">
+
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">
+      <i class="material-icons left">build</i>Gestão de Equipamentos
+    </a>
+  </div>
+</nav>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Novo Equipamento</span>
+    <form id="formEquipamento">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="numeroSerie" type="text" required />
+          <label for="numeroSerie">Número de Série *</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="numeroPatrimonio" type="text" required />
+          <label for="numeroPatrimonio">Número de Patrimônio *</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="nomeEquipamento" type="text" required />
+          <label for="nomeEquipamento">Nome do Equipamento *</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="fabricante" type="text" required />
+          <label for="fabricante">Fabricante *</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="modelo" type="text" required />
+          <label for="modelo">Modelo *</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="dataEnvio" type="date" required />
+          <label for="dataEnvio" class="active">Data de Envio *</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="descricao" class="materialize-textarea" required></textarea>
+          <label for="descricao">Descrição do Problema *</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="tecnico" type="text" />
+          <label for="tecnico">Técnico Responsável</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="observacoes" type="text" />
+          <label for="observacoes">Observações</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit">
+        <i class="material-icons left">save</i>Salvar
+      </button>
+      <button type="button" class="btn grey lighten-1 waves-effect" id="btnLimpar">
+        <i class="material-icons left">clear</i>Limpar
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-content">
+    <table class="striped responsive-table">
+      <thead>
+        <tr>
+          <th>Nº Série</th>
+          <th>Patrimônio</th>
+          <th>Nome</th>
+          <th>Data Envio</th>
+          <th>Status</th>
+          <th>Data Retorno</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaEquipamentos"></tbody>
+    </table>
+  </div>
+</div>
+
+<footer class="center-align">
+  <p>Desenvolvido por Guilherme Bianchi &nbsp; <i class="material-icons">engineering</i></p>
+</footer>
+
+<!-- Materialize JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/script.js"></script>
+<!-- Modal de data de retorno -->
+<div id="modalDataRetorno" class="modal">
+  <div class="modal-content">
+    <h5>Informe a data de retorno do equipamento</h5>
+    <div class="input-field">
+      <input id="inputDataRetorno" type="text" maxlength="10" placeholder="dd/mm/aaaa" />
+      <label for="inputDataRetorno">Data de Retorno</label>
+    </div>
+    <span id="errorDataRetorno" style="color:red; display:none;">Formato inválido. Use dd/mm/aaaa.</span>
+  </div>
+  <div class="modal-footer">
+    <button class="modal-close btn-flat" id="cancelarDataRetorno">Cancelar</button>
+    <button class="btn green" id="confirmarDataRetorno">Confirmar</button>
+  </div>
+</div>
+
+</body>
+</html>
